@@ -1,0 +1,19 @@
+[
+    {
+        "namespace": "object/proof",
+        "protocol": "ipfs",
+        "address": "QmQBr71HhzUsD3iZK2swBK3orb9x9Em3oSYcm9YHqcMEwT",
+        "comment": "the root proof"
+    },
+    {
+        "namespace": "object/proof",
+        "protocol": "ipfs",
+        "address": "QmX52xKoB9sdTynjgTMfFabKzmC1aQ9krU66BqpePzbUar",
+        "comment": "the namespace proof"
+    },
+    {
+        "namespace": "object/name",
+        "protocol": "ipfs",
+        "address": "Qmf9xetpcEN5uJ6WkS6d3pjGFgtEQu4GzrtAshQEqtEZNW"
+    }
+]

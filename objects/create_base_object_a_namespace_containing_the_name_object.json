@@ -1,0 +1,23 @@
+[
+    {
+        "namespace": "object/proof",
+        "address": "QmQBr71HhzUsD3iZK2swBK3orb9x9Em3oSYcm9YHqcMEwT",
+        "protocol": "ipfs"
+    },
+    {
+        "namespace": "object/proof",
+        "address": "QmUK9SDfYtdNyKCBNnsFSNBLP7fBT1XwAgPVy1hfB8bgLi",
+        "protocol": "ipfs",
+        "comment": "the namespace proof"
+    },
+    {
+        "namespace": "object/name",
+        "address": "QmUK9SDfYtdNyKCBNnsFSNBLP7fBT1XwAgPVy1hfB8bgLi",
+        "protocol": "ipfs"
+    },
+    {
+        "namespace": "object/name",
+        "address": "QmUK9SDfYtdNyKCBNnsFSNBLP7fBT1XwAgPVy1hfB8bgLi",
+        "protocol": "ipfs"
+    }
+]
