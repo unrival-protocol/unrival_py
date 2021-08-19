@@ -1,16 +1,20 @@
 Feature: Namespace
   
-  Scenario: create a namespace
-    Given a name
-    Then a namespace can be created from this name
+  Scenario: create base namespace
+    Given the root proof
+    And the namespace proof
+    And a namespace containing the name object
+    And a universe containing this namespace
+    And an interpretation 
+    And parts containing these objects
+    And an object is created from these parts
+    Then it can be read and parsed
+    And it can be proved
 
-  Scenario: create a nested namespace
-    Given a namespace
-    And a name
-    Then a namespace can be created from this name that inherits from this namespace
-
+  """
   Scenario: subscribe to a namespace
     Given an agent
     And a namespace
     When this agent subscribes to this namespace
     Then this agent is in the namespace's subscribers list
+  """
