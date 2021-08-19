@@ -1,68 +1,42 @@
 import pytest
+from unrival_py import store
+from pytest_bdd import given
+import glob
+from pathlib import Path
 
-@pytest.fixture()
-def proof_address():
-    return "QmVvzZG1HvFTB2Z8BkPcRwy2Dn1WV3ZpNASbiCSjeCsJGS"
+# shared steps
+@given("a protocol", target_fixture="a_protocol")
+def ipfs():
+    return 'ipfs'
 
-@pytest.fixture()
-def a_namespace_address():
-    return ''
+# add step fixtures to global namespace
+def generate_fixture(path_obj):
+    """
+    generates a fixture like the following:
 
-@pytest.fixture()
-def outcomes_list():
-    return ''
+    @pytest.fixture()
+    def create_base_universe_a_universe_only_containing_the_base_namespace_conf():
+        return 'QmcRFfLscQayMdkZ1KT878GZakCJcRfLcaJhaNYEstisNj'
+    """
+    extension = path_obj.suffix
+    @pytest.fixture(scope='module')
+    def step():
+        with open(path_obj.resolve()) as f:
+            data = f.read()
+            if path_obj.stem.split('-')[-1] == 'data':
+                address = store(data, 'ipfs')
+                return address
+            return data
+    return step
 
+def inject_fixture(name, path_obj):
+    print(f'Injecting fixture: {name}.')
+    globals()[name] = generate_fixture(path_obj)
 
-def root_level_namespace_proof():
-    return 'QmXhx5ySSV4wff2w1cZ9axR8nvaxvgZHZwdhCcPMaHhSFh'
+# create fixtures from object files
+object_files = glob.glob("objects/*")
 
-@pytest.fixture()
-def parts():
-    return [
-         {
-            "name": "proof",
-            "type": "proof",
-            "protocol": "ipfs",
-            "address": "QmVvzZG1HvFTB2Z8BkPcRwy2Dn1WV3ZpNASbiCSjeCsJGS"
-         }
-    ]
-
-@pytest.fixture()
-def insufficient_parts():
-    return [
-         {
-            "name": "proof",
-            "type": "proof",
-            "protocol": "ipfs",
-            "address": "QmVvzZG1HvFTB2Z8BkPcRwy2Dn1WV3ZpNASbiCSjeCsJGS"
-         },
-         {
-            "name": "creator",
-            "type": "agent",
-            "protocol": "ipfs",
-            "address": "some_address"
-         },
-         {
-            "name": "subscriber",
-            "type": "agent",
-            "protocol": "ipfs",
-            "address": "some_other_address"
-         }
-    ]
-
-@pytest.fixture()
-def outcome_address():
-    return 'q2lk3j23kl'
-
-
-@pytest.fixture()
-def outcome_prototype():
-    return ''
-
-@pytest.fixture()
-def namespace_address():
-    return 'awklefjklwefjw'
-
-@pytest.fixture()
-def agent_address():
-    return 'lakjeflk23jfkljwe'
+for f in object_files:
+    path_obj = Path(f)
+    fixture_name = path_obj.stem + '_conf' # conf is added to specify fixture is loaded from conftest file
+    inject_fixture(fixture_name, path_obj)
