@@ -2,13 +2,12 @@ Feature: Object
 
   Scenario: create base object
     Given the object proof
-    And a namespace containing the name object
     And the empty universe
     And the base interpretation
     And parts containing these objects
     And a protocol
     And an object is created from these parts
-    And it can be proved
+    Then it can be proved
 
   Scenario: create object with ancestor 
     Given a set of parts including a namespace and a universe
@@ -33,8 +32,6 @@ Feature: Object
     Given a proof
     And a set of parts containing but not satisfying this proof
     Then an object cannot be created from these parts
-
-
 
   """ 
   Scenario: fail to create object due to non-unique labels

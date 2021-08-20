@@ -20,10 +20,6 @@ def test_create_base_object():
 def a_namespace(create_base_object_the_object_proof_conf):
     return create_base_object_the_object_proof_conf
 
-@given("a namespace containing the name object", target_fixture="create_base_object_a_namespace_containing_the_name_object")
-def a_namespace(create_base_object_a_namespace_containing_the_name_object_conf):
-    return create_base_object_a_namespace_containing_the_name_object_conf
-
 @given("the empty universe", target_fixture="create_base_object_the_empty_universe")
 def the_empty_universe(create_base_object_the_empty_universe_conf):
     return create_base_object_the_empty_universe_conf
@@ -38,15 +34,18 @@ def parts_containing(create_base_object_parts_containing_these_objects_data_conf
 
 @given("an object is created from these parts", target_fixture="create_base_object_an_object_is_created_from_these_parts")
 def an_object_is_created(create_base_object_parts_containing_these_objects_data_conf, a_protocol, create_base_object_the_empty_universe):
+    print('the empty universe:')
+    print(create_base_object_the_empty_universe)
     parts = parse(create_base_object_parts_containing_these_objects_data_conf)
     result = create(parts, create_base_object_the_empty_universe, a_protocol)
     return result
 
 @then("it can be proved")
-def prove_object(create_base_object_an_object_is_created_from_these_parts):
+def prove_object(create_base_object_an_object_is_created_from_these_parts, create_base_object_the_object_proof):
     object_address = create_base_object_an_object_is_created_from_these_parts[0]
     universe_address = create_base_object_an_object_is_created_from_these_parts[1]
-    assert prove(object_address, universe_address)
+    assert prove(object_address, universe_address, None, create_base_object_the_object_proof)
+    # the above will raise exceptions if proof fails
 
 """
 @scenario('../features/Object.feature', 'create object with ancestor')

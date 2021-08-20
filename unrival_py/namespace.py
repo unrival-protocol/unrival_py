@@ -1,5 +1,7 @@
 class Namespace:
-    def create(prototype, outcomes):
+    def __init__(self):
+        pass
+    def create(self, prototype, outcomes):
         print('creating goal')
         parts = [
             {
@@ -18,4 +20,3 @@ class Namespace:
             }
             parts.append(outcome)
         return parts
-

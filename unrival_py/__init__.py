@@ -4,9 +4,14 @@
 from subprocess import PIPE, run, call
 from .goal import Goal
 from .agent import Agent
+from .proof import Proof
+from .universe import Universe
 import re
 import json
 import sys
+
+# initialize classes
+
 
 __version__ = "0.0.3"
 
@@ -16,14 +21,18 @@ def get_root_proof_address():
         address = store(contents, 'ipfs')
         return address
 
-def read(address):
-    try:
-        command = ['ipfs', 'cat', address]
-        result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
-        output = result.stdout
-        return output.strip()
-    except Exception:
-        raise Exception
+def read(address, protocol = 'ipfs'):
+    if protocol == 'ipfs':
+        try:
+            command = ['ipfs', 'cat', address]
+            result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
+            output = result.stdout
+            return output.strip()
+        except Exception:
+            raise Exception
+    else:
+        # TODO add support for other protocols, e.g. DAT
+        return NotImplementedError
 
 def parse(object_string):
     return json.loads(object_string)
@@ -41,6 +50,7 @@ def prove(object_address, universe_address, object_parts = None, proof_address =
     Returns:
       bool: proof failed or succeeded
     """
+    print(universe_address)
     print(f'Attempting to prove object at address: {object_address} within universe at address: {universe_address}')
     if object_parts is None:
         object_string = read(object_address)
@@ -53,48 +63,24 @@ def prove(object_address, universe_address, object_parts = None, proof_address =
 
     result = execute(proof_string, object_address, universe_address)
     assert result.returncode == 0
+    return True
 
-def prove_parts(parts, proof_address = None):
-    if proof_address is None:
-        proof_string = read(get_root_proof_address())
-    else:
-        proof_string = read(proof_address)
-    result = execute(proof_string, object_address)
-    assert result.returncode == 0
 
-def execute(command_string, object_address, universe_address):
-    execution = run([sys.executable, "-c", command_string, object_address, universe_address])
-    return execution
-
-def get_prototype(parts):
-    parts = json.loads(json.dumps(parts))
-    for row in parts:
-        if row['label'] == 'prototype':
-            return row['address']
-    return None
-
-def get_proof(parts):
-    parts = json.loads(json.dumps(parts))
-    for row in parts:
-        if row['label'] == 'proof':
-            return row['address']
-    return None
-
-def filter_parts(parts, namespace, address=True):
+def filter_parts(parts, interpretation, address=True):
     """
-    Filter parts by namespace.  Maps to addresses by default; set address to false to map to parts.
+    Filter parts by interpretation.  Maps to addresses by default; set address to false to map to parts.
 
     Args:
       parts (list): A list of parts (object references)
-      namespace (str): The namespace to filter by
-      address (bool): Whether output should be addresses (default) or parts
+      interpretation (str): The interpretation to filter by
+      address (bool): Whether output should be parts or parts mapped to addresses (default)
     Returns:
-      list: parts or addresses filtered by namespace
+      list: parts or addresses filtered by interpretation
     """
     filtered_parts = []
     all_parts = json.loads(json.dumps(parts))
     for row in all_parts:
-        if row['namespace'] == namespace:
+        if 'interpretation' in row and row['interpretation'] == interpretation:
             if address:
                 filtered_parts.append(row['address'])
             else:
@@ -117,30 +103,12 @@ def get_part(parts, part_label):
             return row
     return None
 
-def get_parents(parts):
-    parts = json.loads(json.dumps(parts))
-    parents = []
-    for row in parts:
-        if row['namespace'] == 'object/namespace' and row['prototype'] == True:
-            parents.append(row['address'])
-    return parents
-
-def has_prototype(parts):
-    return get_prototype(parts) is not None
+def execute(command_string, object_address, universe_address):
+    execution = run([sys.executable, "-c", command_string, object_address, universe_address])
+    return execution
 
 def has_part(parts, part_key, part_value):
     return any([part[key] == part_value for part in parts])
-
-def has_proof(parts, address=None):
-    proof = get_proof(parts)
-
-    if address is not None:
-        return get_proof(parts) == address
-
-    return get_proof(parts) is not None
-
-def prototype_is_subset_of_instance():
-    pass
 
 def store(string, protocol):
     string = string.replace('"', '\\"')
@@ -164,8 +132,7 @@ def create(parts, universe_address, protocol):
     try:
         proofs = filter_parts(parts, '/object/proof')
         claims = filter_parts(parts, '/object/claim')
-        interpretation_parts = filter_parts(parts, '/object/interpretation', True)
-
+        interpretation_parts = filter_parts(parts, '/object/interpretation', False)
         if (proofs or claims) and not interpretation_parts:
             print('Referencing proofs or claims in an object requires an interpretation to be provided.')
             raise ValueError
@@ -174,17 +141,18 @@ def create(parts, universe_address, protocol):
 
         if (proofs or claims):
             # an object necessitates universe expansion if it makes a objective/subjective proof/claim about itself -- i.e. has a proof or a claim
-            universe_address = create_universe([universe_address], interpretation_parts, protocol)
+            universe_address = create_universe([universe_address], interpretation_parts, object_address, protocol)
+            #print('a newly created universe!')
+            #print(universe_address)
 
         prove(object_address, universe_address)
-
         return (object_address, universe_address)
 
     except Exception as e:
         print(e)
         raise ValueError
 
-def create_universe(parents, interpretations, protocol):
+def create_universe(parents, interpretations, object_address, protocol):
     """
     Create a universe.
     If count of parents > 1, then the universe being created is the result of a merge.
@@ -196,7 +164,16 @@ def create_universe(parents, interpretations, protocol):
     Returns:
       str: the address of the created universe
     """
+
     # no subjective or objective claims may be made about a universe
+    # TODO move this condition to the universe proof
+    
+    # assign value to interpretations
+    valued_interpretations = []
+    for interpretation in interpretations:
+        interpretation['value'] = object_address
+        valued_interpretations.append(interpretation)
+
     for universe in parents:
         universe_string = read(universe)
         universe_parts = parse(universe_string)
@@ -205,10 +182,16 @@ def create_universe(parents, interpretations, protocol):
         assert not (len(filter_parts(universe_parts, '/object/claim')) or len(filter_parts(universe_parts, '/object/proof')))
 
     if len(parents) == 1:
-        universe_parts = parents + interpretations
-        create(universe_parts, parents[0], protocol)
-        # TODO figure out what to create here!!!
-        raise NotImplementedError
+        parent_string = read(parents[0])
+        parent_parts = parse(parent_string)
+        universe_parts = parent_parts + valued_interpretations
+        # will trigger recursive call of `create`, which will result in infinite recursion if universe has proof or claim parts
+        new_universe_address, parent_address = create(universe_parts, parents[0], protocol)
+        print('THE NEW UNIVERSE:')
+        print(new_universe_address)
+        print('THE PARENT ADDRESS:')
+        print(parent_address)
+        return new_universe_address
     else:
         # TODO add scenarios for merging universes
         raise NotImplementedError
@@ -233,3 +216,8 @@ def create_outcome(prototype, description):
     address = store(str(parts).replace("'", '\\"'))
     return address
 
+def lookup_object(universe_address, interpretations):
+    return Universe(read, parse).lookup_object(universe_address, interpretations)
+
+def get_proofs(object_address, universe_address):
+    return Proof(filter_parts, read, parse, lookup_object).get_proofs(object_address, universe_address)

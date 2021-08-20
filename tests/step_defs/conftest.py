@@ -23,7 +23,7 @@ def generate_fixture(path_obj):
     def step():
         with open(path_obj.resolve()) as f:
             data = f.read()
-            if path_obj.stem.split('-')[-1] == 'data':
+            if path_obj.stem.split('_')[-1] != 'data':
                 address = store(data, 'ipfs')
                 return address
             return data
