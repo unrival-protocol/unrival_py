@@ -9,4 +9,4 @@ object_parts = parse(object_string)
 proof_queue = []
 
 print('Executing namespace proof...')
-assert has_part(object_parts, 'namespace', 'object/name')
+assert has_part(object_parts, 'namespace', '/object/name')

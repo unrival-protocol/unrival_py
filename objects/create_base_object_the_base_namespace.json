@@ -1,0 +1,25 @@
+[
+    {
+        "interpretation": "/object/proof",
+        "address": "QmUK9SDfYtdNyKCBNnsFSNBLP7fBT1XwAgPVy1hfB8bgLi",
+        "protocol": "ipfs",
+        "comment": "the namespace proof"
+    },
+    {
+        "interpretation": "/object/universe",
+        "address": "QmVRTb6yL9cajcHLeVG369zTMXXEgCiwW6qpcZHf3s1LMU",
+        "protocol": "ipfs",
+        "comment": "the empty universe"
+    },
+    {
+        "interpretation": "/object/interpretation",
+        "address": "QmY9SsBPgpSLR2k8WHKzCgWgE7JpfQSLmnXNvzg45AtMzm",
+        "protocol": "ipfs",
+        "comment": "the base interpretation"
+    },
+    {
+        "interpretation": "/object/name",
+        "address": "QmUK9SDfYtdNyKCBNnsFSNBLP7fBT1XwAgPVy1hfB8bgLi",
+        "protocol": "ipfs"
+    }
+]
