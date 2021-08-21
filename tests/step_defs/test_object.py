@@ -4,8 +4,6 @@ from pytest_bdd import scenario, given, when, then
 from unrival_py import *
 
 @scenario('../features/Object.feature', 'create base object')
-
-@pytest.mark.base
 def test_create_base_object():
     """
     The base object is the first possible object, which is:

@@ -28,6 +28,7 @@ class Proof:
         print('universe address: ' + universe_address)
         print('===================')
         if iteration == 4:
+            print('too much recursion')
             raise ValueError
         object_string = self.read(object_address)
         object_parts = self.parse(object_string)
@@ -35,7 +36,7 @@ class Proof:
         proofs = proofs.union(self.filter_parts(object_parts, '/object/proof'))
         # get ancestor proofs
         namespaces = self.filter_parts(object_parts, '/object/namespace')
-        print('namespaces: ' + str(namespaces))
+
         if not namespaces:
             return proofs
         for ns in namespaces:
@@ -47,4 +48,6 @@ class Proof:
             #print('interpretations: ' + str(interpretations))
             #print(associated_object)
             proofs = proofs.union(self._get_proofs(associated_object, proofs, universe_address, iteration + 1))
+            print('after the recursive call, proofs is equal to: ')
+            print(proofs)
         return proofs

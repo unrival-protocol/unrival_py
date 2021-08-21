@@ -5,6 +5,7 @@ from unrival_py import *
 
 @scenario('../features/Universe.feature', 'create base universe')
 
+@pytest.mark.universe
 def test_create_base_universe():
     pass
 
