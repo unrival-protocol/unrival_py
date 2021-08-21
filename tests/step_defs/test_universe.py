@@ -23,7 +23,6 @@ def a_namespace(create_base_universe_the_base_namespace_conf):
 @given("an interpretation whereby universe inherits from object", target_fixture="create_base_universe_an_interpretation_whereby_universe_inherits_from_object")
 def the_universe_proof(create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf):
     return create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf
-
 @given("an object is created from these parts", target_fixture="create_base_universe_an_object_is_created_from_these_parts")
 def an_object_is_created(create_base_universe_an_object_is_created_from_these_parts_conf):
     return create_base_universe_an_object_is_created_from_these_parts_conf

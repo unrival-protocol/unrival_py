@@ -1,26 +1,26 @@
 [
     {
-        "namespace": "object/universe",
+        "interpretation": "/object/universe",
         "address": "QmcRFfLscQayMdkZ1KT878GZakCJcRfLcaJhaNYEstisNj",
         "protocol": "ipfs",
         "comment": " a universe only containing the base namespace"
     },
     {
-        "namespace": "object/proof",
+        "interpretation": "/object/proof",
         "address": "QmbexyCRw769msaY8cpd5u1PEMtYDXzehVEbAqrGz9nkWY",
         "protocol": "ipfs",
         "comment": "the universe proof"
     },
     {
-        "namespace": "object/interpretation",
+        "interpretation": "/object/interpretation",
         "address": "QmejeqqQDAfuveeNxbjm7RYbNGUS8oSWTC8iZnFdBgbRCq",
         "protocol": "ipfs",
         "comment": " an interpretation whereby universe inherits from object"
     },
     {
-        "namespace": "object/namespace",
-        "address": "QmNcK7duoBWuGocLpdjPUJ4ankcxyQVZGjLMcSnA4YJArK",
+        "interpretation": "/object/namespace",
+        "address": "QmbGFSzfHAn34QzSfSVKYo3e5VMcoScgqtBrQqmuXMhgTM",
         "protocol": "ipfs",
-        "comment": "a namespace containing the name universe"
+        "comment": "a namespace containing the name object"
     }
 ]

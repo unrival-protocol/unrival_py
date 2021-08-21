@@ -7,19 +7,19 @@
     },
     {
         "interpretation": "/object/universe",
-        "address": "QmVRTb6yL9cajcHLeVG369zTMXXEgCiwW6qpcZHf3s1LMU",
+        "address": "QmcRFfLscQayMdkZ1KT878GZakCJcRfLcaJhaNYEstisNj",
         "protocol": "ipfs",
-        "comment": "the empty universe"
+        "comment": " a universe only containing the base namespace"
     },
     {
         "interpretation": "/object/interpretation",
-        "address": "QmY9SsBPgpSLR2k8WHKzCgWgE7JpfQSLmnXNvzg45AtMzm",
+        "address": "QmW47VDchGQ7odjbKzP5BgVGYmKnqg4RcM4EvJDGKxwovd",
         "protocol": "ipfs",
-        "comment": "the base interpretation"
+        "comment": " an interpretation whereby namespace inherits from object"
     },
     {
         "interpretation": "/object/name",
-        "address": "QmUK9SDfYtdNyKCBNnsFSNBLP7fBT1XwAgPVy1hfB8bgLi",
+        "address": "QmZbBvbkvwbPvWDDeybD3UPyZidUccUudgmLMMnmm1WdYY",
         "protocol": "ipfs"
     }
 ]
