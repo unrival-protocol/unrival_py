@@ -9,22 +9,22 @@ def test_create_base_universe():
     pass
 
 @given("the universe proof", target_fixture="create_base_universe_the_universe_proof")
-def a_namespace(create_base_universe_the_universe_proof_conf):
+def universe_proof(create_base_universe_the_universe_proof_conf):
     return create_base_universe_the_universe_proof_conf
 
-@given("the empty universe", target_fixture="create_base_universe_the_empty_universe")
-def empty_universe(create_base_universe_the_empty_universe_conf):
-    return create_base_universe_the_empty_universe_conf
+@given("the meta universe", target_fixture="create_base_universe_the_meta_universe")
+def meta_universe(create_base_universe_the_meta_universe_conf):
+    return create_base_universe_the_meta_universe_conf
 
 @given("the base namespace", target_fixture="create_base_universe_the_base_namespace")
-def a_namespace(create_base_universe_the_base_namespace_conf):
+def base_namespace(create_base_universe_the_base_namespace_conf):
     return create_base_universe_the_base_namespace_conf
 
 @given("an interpretation whereby universe inherits from object", target_fixture="create_base_universe_an_interpretation_whereby_universe_inherits_from_object")
-def the_universe_proof(create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf):
+def interpretation(create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf):
     return create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf
 @given("an object is created from these parts", target_fixture="create_base_universe_an_object_is_created_from_these_parts")
-def an_object_is_created(create_base_universe_an_object_is_created_from_these_parts_conf):
+def create_object(create_base_universe_an_object_is_created_from_these_parts_conf):
     return create_base_universe_an_object_is_created_from_these_parts_conf
 
 @then("it can be read and parsed")
@@ -35,8 +35,8 @@ def read_and_parse(create_base_universe_an_object_is_created_from_these_parts):
     assert isinstance(object_parts, list)
 
 @then("it can be proved")
-def prove_universe(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_empty_universe_conf):
-    assert prove(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_empty_universe_conf)
+def prove_universe(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_meta_universe_conf):
+    assert prove(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_meta_universe_conf)
 
 """
 @scenario('../features/Universe.feature', 'create universe with ancestor')

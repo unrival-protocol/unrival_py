@@ -1,0 +1,15 @@
+[
+    {
+        "interpretation": "/object/universe",
+        "address": "QmVRTb6yL9cajcHLeVG369zTMXXEgCiwW6qpcZHf3s1LMU",
+        "protocol": "ipfs",
+        "comment": "the empty universe"
+    },
+    {
+        "interpretation": "/object/interpretation",
+        "address": "QmejeqqQDAfuveeNxbjm7RYbNGUS8oSWTC8iZnFdBgbRCq",
+        "protocol": "ipfs",
+        "value": "QmQ1J19dZKpREwx74umTxBTJjLEJJ4qnRy5UCskTnQYJaV",
+        "comment": "the base universe"
+    }
+]

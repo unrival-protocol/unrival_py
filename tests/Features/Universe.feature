@@ -2,6 +2,7 @@ Feature: Universe
 
   Scenario: create base universe
     Given the universe proof
+    And the meta universe
     And the base namespace
     And an interpretation whereby universe inherits from object
     And an object is created from these parts

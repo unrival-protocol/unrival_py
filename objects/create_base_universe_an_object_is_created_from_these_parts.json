@@ -1,13 +1,13 @@
 [
     {
         "interpretation": "/object/universe",
-        "address": "QmcRFfLscQayMdkZ1KT878GZakCJcRfLcaJhaNYEstisNj",
+        "address": "QmVRTb6yL9cajcHLeVG369zTMXXEgCiwW6qpcZHf3s1LMU",
         "protocol": "ipfs",
-        "comment": " a universe only containing the base namespace"
+        "comment": "the empty universe"
     },
     {
         "interpretation": "/object/proof",
-        "address": "QmbexyCRw769msaY8cpd5u1PEMtYDXzehVEbAqrGz9nkWY",
+        "address": "QmT5kzbtCVoaqcWFDYJ1vAaj2yf1oExGwhwTQTLnzZkHxh",
         "protocol": "ipfs",
         "comment": "the universe proof"
     },

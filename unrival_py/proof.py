@@ -27,6 +27,8 @@ class Proof:
         print('===================')
         print('universe address: ' + universe_address)
         print('===================')
+        if iteration == 4:
+            raise ValueError
         object_string = self.read(object_address)
         object_parts = self.parse(object_string)
         # add own proofs
