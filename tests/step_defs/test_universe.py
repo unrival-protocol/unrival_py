@@ -3,29 +3,26 @@ from pytest_bdd import scenario, given, when, then
 
 from unrival_py import *
 
-PROTOCOL = "ipfs"
-
 @scenario('../features/Universe.feature', 'create base universe')
 
-@pytest.mark.v1
 def test_create_base_universe():
     pass
 
-@given("a universe only containing the base namespace", target_fixture="create_base_universe_a_namespace_containing_the_base_namespace")
-def a_namespace(create_base_universe_a_universe_only_containing_the_base_namespace_conf):
-    return create_base_universe_a_universe_only_containing_the_base_namespace_conf
-
 @given("the universe proof", target_fixture="create_base_universe_the_universe_proof")
-def the_universe_proof(create_base_universe_the_universe_proof_conf):
+def a_namespace(create_base_universe_the_universe_proof_conf):
     return create_base_universe_the_universe_proof_conf
 
-@given("a namespace containing the name universe", target_fixture="create_base_universe_a_namespace_containing_the_name_universe")
-def the_base_interpretation(create_base_universe_a_namespace_containing_the_name_universe_conf):
-    return create_base_universe_a_namespace_containing_the_name_universe_conf
+@given("the empty universe", target_fixture="create_base_universe_the_empty_universe")
+def empty_universe(create_base_universe_the_empty_universe_conf):
+    return create_base_universe_the_empty_universe_conf
 
-@given("an interpretation whereby universe inherits from object", target_fixture="create_base_universe_an_interpretation")
-def the_base_interpretation(create_base_universe_an_interpretation_conf):
-    return create_base_universe_an_interpretation_conf
+@given("the base namespace", target_fixture="create_base_universe_the_base_namespace")
+def a_namespace(create_base_universe_the_base_namespace_conf):
+    return create_base_universe_the_base_namespace_conf
+
+@given("an interpretation whereby universe inherits from object", target_fixture="create_base_universe_an_interpretation_whereby_universe_inherits_from_object")
+def the_universe_proof(create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf):
+    return create_base_universe_an_interpretation_whereby_universe_inherits_from_object_conf
 
 @given("an object is created from these parts", target_fixture="create_base_universe_an_object_is_created_from_these_parts")
 def an_object_is_created(create_base_universe_an_object_is_created_from_these_parts_conf):
@@ -39,8 +36,8 @@ def read_and_parse(create_base_universe_an_object_is_created_from_these_parts):
     assert isinstance(object_parts, list)
 
 @then("it can be proved")
-def prove_universe(create_base_universe_an_object_is_created_from_these_parts):
-    assert prove(create_base_universe_an_object_is_created_from_these_parts)
+def prove_universe(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_empty_universe_conf):
+    assert prove(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_empty_universe_conf)
 
 """
 @scenario('../features/Universe.feature', 'create universe with ancestor')

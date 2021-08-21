@@ -3,8 +3,6 @@ from pytest_bdd import scenario, given, when, then
 
 from unrival_py import *
 
-PROTOCOL = "ipfs"
-
 @scenario('../features/Object.feature', 'create base object')
 
 @pytest.mark.base
@@ -12,7 +10,7 @@ def test_create_base_object():
     """
     The base object is the first possible object, which is:
     0. dependent on the root proof, because successful creation of any object requires proof of validity
-    1. co-dependent on the creation of the first universe, the first namespace, and the first interpretation
+    1. co-dependent on the creation of the first universe and the first interpretation
     """
     pass
 
