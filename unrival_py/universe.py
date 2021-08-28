@@ -4,7 +4,7 @@ class Universe:
         self.read = read
         self.parse = parse
 
-    def lookup_object(self, universe_address, interpretations):
+    def interpret_object(self, universe_address, interpretations):
 
         universe_string = self.read(universe_address)
         universe_parts = self.parse(universe_string)

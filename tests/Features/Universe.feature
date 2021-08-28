@@ -9,8 +9,8 @@ Feature: Universe
     Then it can be read and parsed
     And it can be proved
 
-  Scenario: look up complex object in universe
+  Scenario: interpret complex object in universe
     Given a universe that assigns a complex object the interpretation /object/example
-    And this object's address is looked up
+    And this object's address is interpret
     Then an address is returned that can be parsed
 

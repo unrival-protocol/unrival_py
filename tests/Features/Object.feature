@@ -10,11 +10,13 @@ Feature: Object
     Then it can be proved
 
   Scenario: create object with ancestor 
-    Given a set of parts including a namespace and a universe
-    And an interpretation associating the namespace with an object
-    And the object located at this address has a proof
-    And these parts satisfy this proof
-    Then an object can be created from these parts
+    Given a namespace containing the name example
+    And a proof requiring an object to have no more than 10 parts
+    And an interpretation whereby example inherits from object
+    And a universe wherein object can be interpreted
+    And parts containing these objects
+    And an object is created from these parts
+    And it can be proved
 
   Scenario: create object with ancestor and own proof
     Given a set of parts including a namespace and a universe

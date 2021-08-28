@@ -1,0 +1,13 @@
+[
+    {
+        "interpretation": "/object/interpretation",
+        "address": "address pointing to /object",
+        "protocol": "ipfs"
+    },
+    {
+        "interpretation": "/object/universe",
+        "address": "alwkefjewfklewfe",
+        "protocol": "ipfs",
+        "comment": ""
+    }
+]

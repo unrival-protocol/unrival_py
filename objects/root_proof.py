@@ -4,13 +4,14 @@ from unrival_py import *
 
 # address of object to be proved
 object_address = sys.argv[1]
-# universe in which interpretations should be applied
-universe_address = sys.argv[2]
+print(object_address + ' from root')
+# context in which interpretations should be applied
 
 print('Executing root proof...')
 
-proofs = get_proofs(object_address, universe_address)
+proofs = get_proofs(object_address)
+print('proofs are:')
 
 for proof_address in proofs:
     # now apply each proof to the original object address
-    prove(object_address, universe_address, None, proof_address)
+    prove(object_address, None, proof_address)

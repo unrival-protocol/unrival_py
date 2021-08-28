@@ -2,7 +2,7 @@ import pytest
 from pytest_bdd import scenario, given, when, then
 
 from unrival_py import *
-
+"""
 @scenario('../features/Universe.feature', 'create base universe')
 
 @pytest.mark.universe
@@ -39,7 +39,7 @@ def read_and_parse(create_base_universe_an_object_is_created_from_these_parts):
 def prove_universe(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_meta_universe_conf):
     assert prove(create_base_universe_an_object_is_created_from_these_parts, create_base_universe_the_meta_universe_conf)
 
-"""
+
 @scenario('../features/Universe.feature', 'create universe with ancestor')
 
 def test_create_universe_with_ancestor():

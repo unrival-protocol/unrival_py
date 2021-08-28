@@ -1,0 +1,14 @@
+[
+    {
+        "interpretation": "/object/interpretation",
+        "address": "QmY9SsBPgpSLR2k8WHKzCgWgE7JpfQSLmnXNvzg45AtMzm",
+        "comment": "the base interpretation",
+        "protocol": "ipfs"
+    },
+    {
+        "interpretation": "/object/universe",
+        "address": "QmQ6vGTgqjec2thBj5skqfPUZcsSuPAbPS7XvkqaYNQVPQ",
+        "protocol": "ipfs",
+        "comment": "universe containing o"
+    }
+]
