@@ -17,9 +17,6 @@ def test_get_proofs(
     great_grandparent_proof = make_simple_part('/proof', proof_unit_test_great_grandparent_proof_data_conf, 'ipfs')
     great_grandparent_parts = [great_grandparent_interpretation, great_grandparent_proof] + parse(proof_unit_test_animal_parts_data_conf)
     great_grandparent_object, great_grandparent_context = create(great_grandparent_parts, 'ipfs')
-
-    print(great_grandparent_object + ' is the great grandparent object')
-    print(great_grandparent_context + ' is the context')
     grandparent_interpretation = make_simple_part('/interpretation', '/animal/mammal', 'ipfs')
     grandparent_proof = make_simple_part('/proof', proof_unit_test_grandparent_proof_data_conf, 'ipfs')
     grandparent_parts = [
@@ -30,8 +27,6 @@ def test_get_proofs(
             'protocol': 'ipfs'
         }
     ] + parse(proof_unit_test_mammal_parts_data_conf) + parse(proof_unit_test_animal_parts_data_conf)
-    print('the grandparent parts:')
-    print(grandparent_parts)
     # creating the 
     grandparent_object, grandparent_context = create(grandparent_parts, 'ipfs')
 
