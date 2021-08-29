@@ -27,8 +27,6 @@ def get_empty_context_address():
 
 
 def read(address, protocol = 'ipfs'):
-    print('attempting to read with address:')
-    print(address)
     if protocol == 'ipfs':
         try:
             command = ['ipfs', 'cat', address]
@@ -42,8 +40,6 @@ def read(address, protocol = 'ipfs'):
         return NotImplementedError
 
 def parse(object_string):
-    print('parse called with')
-    print(object_string)
     return json.loads(object_string)
 
 def prove(object_address, object_parts = None, proof_address = None):
@@ -62,7 +58,6 @@ def prove(object_address, object_parts = None, proof_address = None):
     if object_parts is None:
         object_string = read(object_address)
         object_parts = parse(object_string)
-    print(object_parts)
     print(f'Attempting proof of object at address: {object_address}')
 
     if proof_address is None:
@@ -74,7 +69,6 @@ def prove(object_address, object_parts = None, proof_address = None):
 
     result = execute(proof_string, object_address)
     print(result)
-    print(result.returncode)
     assert result.returncode == 0
     return True
 
@@ -116,13 +110,30 @@ def get_context(object_address = None, object_parts = None, address=False):
     if address:
         return context['address']
     else:
-        return context
+        return [context]
 
 def get_interpretations(parts, address=False, filter_valued=False):
     interpretations = filter_parts(parts, '/interpretation', address)
     if not filter_valued:
         return interpretations
     return list(filter(lambda x : 'value' not in x, interpretations))
+
+
+def get_parent_interpretations(parts, filter_valued=False, protocol = 'ipfs'):
+    result = []
+    for part in parts:
+        if 'interpretation' in part and part['interpretation'] == '/interpretation':
+            if filter_valued and 'value' in part:
+                continue
+            interpretation_address = part['address']
+            interpretation_string = read(interpretation_address)
+            print('int string: ' + interpretation_string)
+            arr = interpretation_string.split('/')
+            if len(arr) > 2:
+                arr.pop()
+                parent_address = store('/'.join(arr), protocol)
+                result.append(parent_address)
+    return result
 
 def get_part(parts, part_label):
     """
@@ -144,8 +155,10 @@ def execute(command_string, object_address):
     execution = run([sys.executable, "-c", command_string, object_address])
     return execution
 
-def has_part(parts, part_key, part_value):
-    return any([part[key] == part_value for part in parts])
+def has_part(parts, part_key, part_value=None):
+    if part_value:
+        return any([part_key in part and part[part_key] == part_value for part in parts])
+    return any([part_key in part for part in parts])
 
 def store(string, protocol):
     string = string.replace('"', '\\"')
@@ -156,34 +169,6 @@ def store(string, protocol):
     return address_matches[0]
 
 def create(parts, protocol):
-
-    object_address = store(json.dumps(parts), protocol)
-
-    context = get_context(None, parts, False)
-    interpretation_addresses = filter_parts(parts, '/interpretation', True)
-    # interpretation parts below refers to interpretations that need to be assigned values in a new universe, so filter values when getting the interpretation
-    interpretation_parts = get_interpretations(parts, False, True)
-    print(1)
-    if context is None:
-        if any([len(read(x).split('/')) > 2 for x in interpretation_addresses]):
-
-            print('If object of degree > 1 references interpretation, it must also reference a context in which it can be interpreted.')
-            raise Exception
-        context_address = get_empty_context_address()
-        context = parse(read(context_address))
-    parts.append(context)
-
-    print(2)
-    if len(interpretation_parts):
-        # set new context, since current context can't interpret new object
-        context = create_context(context, interpretation_parts, object_address, protocol)
-        print('created context: ' + context)
-    print('added ' + object_address)
-    print('will try to prove')
-    prove(object_address)
-    return (object_address, context)
-
-def create1(parts, protocol):
     """
     Create an object
 
@@ -194,53 +179,25 @@ def create1(parts, protocol):
       tuple: A tuple containing 1. the address of the created object 2. the address of a context in which the newly created object can be interpreted
     """
 
-    contexts = filter_parts(parts, '/object/context')
-    if len(contexts) > 2:
-        print('An object may not have more than two contexts as parents')
-        raise Exception
-    if len(contexts) == 2:
-        merged_context = merge_contexts(contexts)
-    else:
-        
+    object_address = store(json.dumps(parts), protocol)
 
-        
-        if len(contexts) > 1 or len(contexts) == 0:
-            print('Created object must have exactly one parent.')
+    context = get_context(None, parts, False)
+    interpretation_addresses = filter_parts(parts, '/interpretation', True)
+    # interpretation parts below refers to interpretations that need to be assigned values in a new universe, so filter values when getting the interpretation
+    interpretation_parts = get_interpretations(parts, False, True)
+    if context is None:
+        if any([len(read(x).split('/')) > 2 for x in interpretation_addresses]):
+            print('If object of degree > 1 references interpretation, it must also reference a context in which it can be interpreted.')
             raise Exception
-        context_address = contexts[0]
-    try:
+        context_address = get_empty_context_address()
+        context = parse(read(context_address))
+    parts.append(context)
 
-        print(1)
-        print('create called with parts:')
-        print(type(parts))
-        print(parts)
-
-        proofs = filter_parts(parts, '/object/proof')
-        claims = filter_parts(parts, '/object/claim')
-        interpretation_parts = filter_parts(parts, '/object/interpretation', False)
-
-        print('calling store with protocol: ' + protocol)
-        object_address = store(json.dumps(parts), protocol)
-        print(2)
-
-        print(object_address)
-
-        if (proofs or claims) and not interpretation_parts:
-            print('Referencing proofs or claims in an object requires an interpretation to be provided.')
-            raise ValueError
-
-        if (proofs or claims):
-            # an object necessitates context expansion if it makes a objective/subjective proof/claim about itself -- i.e. has a proof or a claim
-            context_address = create_context([context_address], interpretation_parts, object_address, protocol)
-            print('a newly created context!')
-            print(context_address)
-
-        prove(object_address, context_address)
-        return (object_address, context_address)
-
-    except Exception as e:
-        print(e)
-        raise ValueError
+    if len(interpretation_parts):
+        # set new context, since current context can't interpret new object
+        context = create_context(context, interpretation_parts, object_address, protocol)
+    prove(object_address)
+    return (object_address, context)
 
 def create_context(context_parts, interpretations, object_address, protocol):
     """
@@ -253,18 +210,14 @@ def create_context(context_parts, interpretations, object_address, protocol):
     Returns:
       str: the address of the created context
     """
-
-    print('creating context with interpretations:' )
-    print(interpretations)
     for interpretation in interpretations:
         interpretation['value'] = object_address
 
     # an assertion may not be added to a universe
-    assert not (len(filter_parts(context_parts, '/object/claim')) or len(filter_parts(context_parts, '/object/proof')))
+    assert not (len(filter_parts(context_parts, '/claim')) or len(filter_parts(context_parts, '/proof')))
 
     context_parts = context_parts + interpretations
     # will trigger recursive call of `create`, which will result in infinite recursion if context has proof or claim parts
-    print(context_parts)
     new_context_address, parent_address = create(context_parts, protocol)
     return new_context_address
 
@@ -301,7 +254,7 @@ def interpret_object(context_address, interpretations):
     return Context(read, parse).interpret_object(context_address, interpretations)
 
 def get_proofs(object_address):
-    return Proof(filter_parts, read, parse, interpret_object, get_interpretations, get_context).get_proofs(object_address)
+    return Proof(filter_parts, read, parse, interpret_object, get_interpretations, get_parent_interpretations, get_context).get_proofs(object_address)
 
 def make_simple_part(interpretation, string, protocol):
     part = {}

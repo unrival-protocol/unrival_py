@@ -1,0 +1,23 @@
+[
+    {
+        "mammary_glands": true
+    },
+    {
+        "sweat_glands": true
+    },
+    {
+        "hair": true
+    },
+    {
+        "number_of_heart_chambers": 4
+    },
+    {
+        "number_of_middle_ear_bones": 3
+    },
+    {
+        "neocortex": true
+    },
+    {
+        "teeth": "specialized"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "snout": "long"
+    },
+    {
+        "bark": true
+    },
+    {
+        "attached_to_man": true
+    },
+    {
+        "claws": "non-retractable"
+    }
+]

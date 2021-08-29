@@ -1,0 +1,12 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmTmTxwKYasp2jnit3VNGnXqYSGvqMy9L4hgpFGkfbwP1S",
+        "protocol": "ipfs"
+    },
+    {
+        "interpretation": "/context",
+        "address": "QmQqkqQrYrJb13qpbDBUH1K9v1tDBsHUCy56ss93s6XkP3",
+        "protocol": "ipfs"
+    }
+]

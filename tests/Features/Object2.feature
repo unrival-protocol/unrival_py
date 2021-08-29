@@ -12,8 +12,18 @@ Feature: Object
     And a proof 
     And an object is created using these parts
     Then it can be proved
-    And it can be interpreted
 
+  Scenario: create object of degree 2
+    Given a proof requiring an object to have 10 parts
+    And an object of degree 1 referencing this proof
+    And a protocol
+    And an interpretation of degree 2
+    And a context where the parent can be interpreted
+    And an object with 10 parts including these parts is created 
+    And an object without 10 parts including these parts is created
+    Then the object with 10 parts can be proved
+    And the object without 10 parts can't be proved
+    
   """
   Scenario: create a parent
     Given an interpretation with one level

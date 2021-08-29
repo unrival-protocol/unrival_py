@@ -21,9 +21,10 @@ def generate_fixture(path_obj):
     extension = path_obj.suffix
     @pytest.fixture(scope='module')
     def step():
-        with open(path_obj.resolve()) as f:
+        path_without_data = str(path_obj.resolve()).replace('_data.', '.')
+        with open(path_without_data) as f:
             data = f.read()
-            if path_obj.stem.split('-')[-1] == 'data':
+            if path_obj.stem.split('_')[-1] != 'data':
                 address = store(data, 'ipfs')
                 return address
             return data
@@ -35,6 +36,8 @@ def inject_fixture(name, path_obj):
 
 # create fixtures from object files
 object_files = glob.glob("objects/*")
+object_files = object_files + [x.replace('.', '_data.') for x in object_files]
+print(object_files)
 
 for f in object_files:
     path_obj = Path(f)
