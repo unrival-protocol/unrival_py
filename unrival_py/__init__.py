@@ -254,7 +254,7 @@ def interpret_object(context_address, interpretations):
     return Context(read, parse).interpret_object(context_address, interpretations)
 
 def get_proofs(object_address):
-    return Proof(filter_parts, read, parse, interpret_object, get_interpretations, get_parent_interpretations, get_context).get_proofs(object_address)
+    return Proof(filter_parts, read, parse, interpret_object, get_parent_interpretations, get_context).get_proofs(object_address)
 
 def make_simple_part(interpretation, string, protocol):
     part = {}
