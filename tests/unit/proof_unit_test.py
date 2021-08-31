@@ -66,5 +66,4 @@ def test_get_proofs(
         proof_unit_test_child_proof_2_conf
     ]
     child_proofs = get_proofs(child_object)
-    assert False
     assert set(proofs_child_must_satisfy) == set(child_proofs)

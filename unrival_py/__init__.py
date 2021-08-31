@@ -250,8 +250,8 @@ def create_outcome(prototype, description):
     address = store(str(parts).replace("'", '\\"'))
     return address
 
-def interpret_object(context_address, interpretations):
-    return Context(read, parse).interpret_object(context_address, interpretations)
+def interpret_object(context_address, interpretation_parts = None, interpretations = None):
+    return Context(read, parse, make_simple_part).interpret_object(context_address, interpretation_parts, interpretations)
 
 def get_proofs(object_address):
     return Proof(filter_parts, read, parse, interpret_object, get_parent_interpretations, get_context).get_proofs(object_address)
