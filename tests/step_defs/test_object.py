@@ -22,7 +22,7 @@ def prove_object_degree_0(create_object_of_degree_0_an_object_is_created_using_t
     assert prove(create_object_of_degree_0_an_object_is_created_using_these_parts)
 
 
-@scenario('../features/Object2.feature', 'create object of degree 1')
+@scenario('../features/Object.feature', 'create object of degree 1')
 def test_object_degree_1():
     pass
 
@@ -50,7 +50,7 @@ def object_degree_1_prove(create_object_of_degree_1_an_object_is_created_using_t
     
     assert prove(create_object_of_degree_1_an_object_is_created_using_these_parts[0])
 
-@scenario('../features/Object2.feature', 'create object of degree 2')
+@scenario('../features/Object.feature', 'create object of degree 2')
 
 def test_object_of_degree_2():
     pass

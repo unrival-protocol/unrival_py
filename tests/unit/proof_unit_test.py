@@ -56,6 +56,7 @@ def test_get_proofs(
         }
     ] + parse(proof_unit_test_dalmation_parts_data_conf) + parse(proof_unit_test_dog_parts_data_conf) + parse(proof_unit_test_mammal_parts_data_conf) + parse(proof_unit_test_animal_parts_data_conf)
     child_object, child_context = create(child_parts, 'ipfs')
+    print('the child context is: ' + child_context)
 
     proofs_child_must_satisfy = [
         proof_unit_test_great_grandparent_proof_conf,
@@ -65,4 +66,5 @@ def test_get_proofs(
         proof_unit_test_child_proof_2_conf
     ]
     child_proofs = get_proofs(child_object)
+    assert False
     assert set(proofs_child_must_satisfy) == set(child_proofs)
