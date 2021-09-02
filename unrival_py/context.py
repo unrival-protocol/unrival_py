@@ -6,6 +6,7 @@ class Context:
         self.make_simple_part = make_simple_part
 
     def interpret_object(self, context_address, interpretation_parts = None, interpretations = None):
+        print('trying to interpret')
         if not interpretation_parts and not interpretations:
             return None
         if not interpretation_parts:
@@ -19,5 +20,3 @@ class Context:
                 continue
             if 'address' in part and part['address'] in interpretation_parts:
                 return part['value']
-
-

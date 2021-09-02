@@ -1,0 +1,25 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "Qmcxn1QZBRNchYiH3WaCP7FfbTQoSbrdrGveHqBVDoGMdP",
+        "comment": "/iterator"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "get paid",
+        "address": null,
+        "done": true
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "quit",
+        "address": null,
+        "done": true
+    },
+    {
+        "title": "Business Incubator"
+    },
+    {
+        "description": "An incubator for starting a business.  Choose a role and find out what to do next..."
+    }
+]

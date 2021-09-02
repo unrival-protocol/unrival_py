@@ -1,0 +1,21 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "Qmcxn1QZBRNchYiH3WaCP7FfbTQoSbrdrGveHqBVDoGMdP",
+        "comment": "/iterator"
+    },
+    {
+        "interpretation": "/iterator",
+        "next": "QmTsMkQ92xn6sp43r9ECanFme76B3GNGtknZSuNLbmd8V3",
+        "address": "QmTsMkQ92xn6sp43r9ECanFme76B3GNGtknZSuNLbmd8V3",
+        "label": "worker",
+        "description": "",
+        "execute": "",
+        "args": [
+            {
+                "label": "agree to terms",
+                "type": "boolean"
+            }
+        ]
+    }
+]

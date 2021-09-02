@@ -1,0 +1,14 @@
+[
+    {
+        "interpretation": "/provider",
+        "address": "aklwjflk2wfjl2kj23lkf2j3",
+        "endpoint": "data",
+        "execute": "lajwflkjlkj3l2jlf3j23lkj",
+        "args": [
+            {
+                "type": "str",
+                "name": "example"
+            }
+        ]
+    }
+]

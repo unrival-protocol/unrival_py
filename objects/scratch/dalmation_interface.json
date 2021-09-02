@@ -1,0 +1,16 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmVdQFxNMYtRckLTBw1SRfAH7ohixM2pCfmo9NgGraL7hE"
+    },
+    {
+        "interpretation": "/action",
+        "address": "lawjeflawkflkfjewlkfjwekfwafeelkfj",
+        "label": "pay bill"
+    },
+    {
+        "interpretation": "/action",
+        "address": "lawjeflawkflkfjewlkfjwekfwafeelkfj",
+        "label": "check bill"
+    }
+]

@@ -161,7 +161,7 @@ def has_part(parts, part_key, part_value=None):
     return any([part_key in part for part in parts])
 
 def store(string, protocol):
-    string = string.replace('"', '\\"')
+    string = string.replace('"', '\\"').strip()
     command = f"echo \"{string}\" | {protocol} add"
     result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
     address_rx = re.compile(r'added (.*?) .*')
@@ -183,7 +183,9 @@ def create(parts, protocol):
 
     context = get_context(None, parts, False)
     interpretation_addresses = filter_parts(parts, '/interpretation', True)
-    # interpretation parts below refers to interpretations that need to be assigned values in a new universe, so filter values when getting the interpretation
+
+    # interpretation parts below refers to interpretations that need to be assigned values in a new context, so valued interpretations are not included
+
     interpretation_parts = get_interpretations(parts, False, True)
     if context is None:
         if any([len(read(x).split('/')) > 2 for x in interpretation_addresses]):
@@ -213,13 +215,25 @@ def create_context(context_parts, interpretations, object_address, protocol):
     for interpretation in interpretations:
         interpretation['value'] = object_address
 
-    # an assertion may not be added to a universe
+    # an assertion may not be added to a context
     assert not (len(filter_parts(context_parts, '/claim')) or len(filter_parts(context_parts, '/proof')))
 
     context_parts = context_parts + interpretations
     # will trigger recursive call of `create`, which will result in infinite recursion if context has proof or claim parts
     new_context_address, parent_address = create(context_parts, protocol)
     return new_context_address
+
+def resolve_context(address, protocol):
+    print('resolve called')
+    result = {}
+    parts = parse(read(address, protocol))
+    for part in parts:
+        if 'value' in part and part['value'] and part['interpretation'] == '/interpretation':
+            interpretation = read(part['address'])
+            result[interpretation] = part['value']
+    print('tried to resolve the context')
+    print(result)
+    return result
 
 def merge_contexts(contexts):
     parts = contexts
@@ -263,4 +277,3 @@ def make_simple_part(interpretation, string, protocol):
     part['protocol'] = protocol
     part['interpretation'] = interpretation
     return part
-    

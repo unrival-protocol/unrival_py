@@ -1,0 +1,19 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmVdQFxNMYtRckLTBw1SRfAH7ohixM2pCfmo9NgGraL7hE",
+        "comment": "/interface"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "your role",
+        "address": "QmSTTm6A746jDdA2LxSYRpiARb5EWtJSMtyyJJ4qsz46vu",
+        "next": "QmSTTm6A746jDdA2LxSYRpiARb5EWtJSMtyyJJ4qsz46vu"
+    },
+    {
+        "title": "Business Incubator"
+    },
+    {
+        "description": "An incubator for starting a business.  Choose a role and find out what to do next..."
+    }
+]

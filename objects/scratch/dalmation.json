@@ -1,0 +1,7 @@
+[{"address": "QmPGEbbXWMBLkY87RMPpxKjk3k6EmQjbgtKDVeKrYhvihj", "protocol": "ipfs", "interpretation": "/proof"}, {"address": "QmaKdTQqyTNd7F4FNeaiuHZNSoEhcSaMfmQr9REpPEZQMd", "protocol": "ipfs", "interpretation": "/proof"}, {"address": "QmVoXUvXJAw39o9HNPRu2SP1UuNKzEVKJUzaGsDoUnysUL", "protocol": "ipfs", "interpretation": "/interpretation"}, {"interpretation": "/context", "address": "QmV6kvBqSXQgGXCQ4fjZnCx8tZDjCNqSWPQP6MncYDv5g5", "protocol": "ipfs"}, {"spots": true}, {"hyper": true}, {"snout": "long"}, {"bark": true}, {"attached_to_man": true}, {"claws": "non-retractable"}, {"mammary_glands": true}, {"sweat_glands": true}, {"hair": true}, {"number_of_heart_chambers": 4}, {"number_of_middle_ear_bones": 3}, {"neocortex": true}, {"teeth": "specialized"}, {"heterotropic": true}, {"motile": true}, {"has_cell_wall": false}, {"has_sensory_organs": true}, {"grows_from_blastula": true},
+ {
+     "interpretation": "/interface",
+     "address": "QmdxxFceHCnBEb3BoWG4CPpgoTZAN3z3u669vqN3bmoh5R",
+     "protocol": "ipfs"
+ }
+]

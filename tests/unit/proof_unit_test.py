@@ -42,6 +42,7 @@ def test_get_proofs(
         }
     ] + parse(proof_unit_test_dog_parts_data_conf) + parse(proof_unit_test_mammal_parts_data_conf) + parse(proof_unit_test_animal_parts_data_conf)
     parent_object, parent_context = create(parent_parts, 'ipfs')
+    print('the parent context is: ' + parent_context)
     child_interpretation = make_simple_part('/interpretation', '/animal/mammal/dog/dalmation', 'ipfs')
     child_proof_1_conf = make_simple_part('/proof', proof_unit_test_child_proof_1_data_conf, 'ipfs')
     child_proof_2 = make_simple_part('/proof', proof_unit_test_child_proof_2_data_conf, 'ipfs')
@@ -56,8 +57,6 @@ def test_get_proofs(
         }
     ] + parse(proof_unit_test_dalmation_parts_data_conf) + parse(proof_unit_test_dog_parts_data_conf) + parse(proof_unit_test_mammal_parts_data_conf) + parse(proof_unit_test_animal_parts_data_conf)
     child_object, child_context = create(child_parts, 'ipfs')
-    print('the child context is: ' + child_context)
-
     proofs_child_must_satisfy = [
         proof_unit_test_great_grandparent_proof_conf,
         proof_unit_test_grandparent_proof_conf,
