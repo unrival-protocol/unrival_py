@@ -1,0 +1,18 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "Qmcxn1QZBRNchYiH3WaCP7FfbTQoSbrdrGveHqBVDoGMdP",
+        "protocol": "ipfs",
+        "comment": "/iterator"
+    },
+    {
+        "interpretation": "/iterator",
+        "address": "",
+        "next": "",
+        "protocol": "ipfs"
+    }
+    {
+        "title": "Cooperative Rides",
+        "value": "Find a ride with a cooperative rideshare platform!.  To get started, choose your role."
+    }
+]

@@ -6,6 +6,12 @@
     },
     {
         "interpretation": "/iterator",
+        "done": true,
+        "endpoint": "/proof/",
+        "args": "address"
+    },
+    {
+        "interpretation": "/iterator",
         "next": "QmTsMkQ92xn6sp43r9ECanFme76B3GNGtknZSuNLbmd8V3",
         "address": "QmTsMkQ92xn6sp43r9ECanFme76B3GNGtknZSuNLbmd8V3",
         "label": "worker",

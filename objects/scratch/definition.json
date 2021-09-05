@@ -1,0 +1,22 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmXgZDxF1C1AxeV9LtXf7zWdqwsqskVNxnUo6WphzRFvL2",
+        "protocol": "ipfs"
+    },
+    {
+        "interpretation": "/iterator/interface",
+        "address": "QmV65kuBAqNifJDFe26zyUAysVaDupSSTKGu4anZ9Ptb5W",
+        "protocol": "ipfs",
+        "comment": ""
+    },
+    {
+        "interpretation": "/iterator/claim",
+        "address": "QmUFK4PVFWoQqCqAHY5ihAfv9MjhWWqsqoCAN7xvCB8vxs",
+        "protocol": "ipfs"
+    },
+    {
+        "label": null,
+        "value": null
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmVdQFxNMYtRckLTBw1SRfAH7ohixM2pCfmo9NgGraL7hE",
+        "protocol": "ipfs",
+        "comment": "/interface"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "Add Definition",
+        "address": "Qme7Bz66cQGemHATkbLykdJdrkR8HCxTVJiYXACjizjGh2",
+        "next": "Qme7Bz66cQGemHATkbLykdJdrkR8HCxTVJiYXACjizjGh2"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "Find Definition",
+        "done": true,
+        "address": null
+    }
+]

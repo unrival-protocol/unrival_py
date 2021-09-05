@@ -1,16 +1,19 @@
 [
     {
         "interpretation": "/interpretation",
-        "address": "QmVdQFxNMYtRckLTBw1SRfAH7ohixM2pCfmo9NgGraL7hE"
+        "address": "QmVdQFxNMYtRckLTBw1SRfAH7ohixM2pCfmo9NgGraL7hE",
+        "protocol": "ipfs"
     },
     {
-        "interpretation": "/action",
+        "interpretation": "/iterator",
         "address": "lawjeflawkflkfjewlkfjwekfwafeelkfj",
+        "next": "lkfajwelkfjwelkfjewklfjwlkefjwefkfwfj",
         "label": "pay bill"
     },
     {
         "interpretation": "/action",
         "address": "lawjeflawkflkfjewlkfjwekfwafeelkfj",
+        "next": "lkfajwelkfjwelkfjewklfjwlkefjwefkfwfj",
         "label": "check bill"
     }
 ]

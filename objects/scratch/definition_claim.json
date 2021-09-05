@@ -1,0 +1,20 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "Qmd1Mh23FpkoJZZ1HPpdRrgGaQLwDrwqjnN7tPEgNkmNZf",
+        "protocol": "ipfs",
+        "comment": "/iterator/claim"
+    },
+    {
+        "interpretation": "/interpretation/domain",
+        "address": "Qmaabhx73MvmxFBHPmAFqnohabSeXAeQFHACuPPxRjEass",
+        "protocol": "ipfs",
+        "comment": "/english language"
+    },
+    {
+        "interpretation": "/iterator/assessment",
+        "label": "Assess Claim",
+        "address": "QmSSzdYTJJpJNxayyUe3n6iq1zD1H11dbA7omStqxpWQDi",
+        "next": "QmSSzdYTJJpJNxayyUe3n6iq1zD1H11dbA7omStqxpWQDi"
+    }
+]

@@ -1,0 +1,38 @@
+[
+        {
+            "interpretation": "/interpretation",
+            "address": "QmbgUuX4FHqWszXs7EeTyzvTkxHxdaNPXBzHFhNnysztuU",
+            "comment": "/iterator/role"
+        },
+        {
+            "interpretation": "/iterator",
+            "label": "Driver",
+            "address": null,
+            "done": true
+        },
+        {
+            "interpretation": "/iterator",
+            "label": "Rider",
+            "address": "QmT8rUr545E9mnJmd5BXDdLGetsbUEmTLfPHid4qJZzuMg",
+            "next": "QmT8rUr545E9mnJmd5BXDdLGetsbUEmTLfPHid4qJZzuMg"
+        },
+        {
+            "interpretation": "/iterator",
+            "label": "entrepreneur",
+            "address": null,
+            "done": true
+        },
+        {
+            "interpretation": "/iterator",
+            "label": "developer",
+            "address": null,
+            "done": true
+        },
+        {
+            "description": "Which role will you play?"
+        },
+        {
+            "title": "ROLE"
+        }
+]
+

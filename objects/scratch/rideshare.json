@@ -1,0 +1,22 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmZrGiCPsvV3LUVoEsLo4SHwR1a2KFHabJ2w2beXQZS8AK",
+        "protocol": "ipfs"
+    },
+    {
+        "interpretation": "/iterator/interface",
+        "address": "QmeoF3aiZricmroTTFJpANdpJfhyrZtbzVWGEDDCqwDYor",
+        "protocol": "ipfs",
+        "comment": "rideshare interface"
+    },
+    {
+        "interpretation": "/iterator/claim",
+        "address": "QmUFK4PVFWoQqCqAHY5ihAfv9MjhWWqsqoCAN7xvCB8vxs",
+        "protocol": "ipfs"
+    },
+    {
+        "title": "Cooperative Rides",
+        "description": "Find a ride with a cooperative rideshare platform!.  To get started, choose your role."
+    }
+]

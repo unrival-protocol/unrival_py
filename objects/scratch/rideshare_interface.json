@@ -1,0 +1,20 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "protocol": "ipfs",
+        "address": "QmVdQFxNMYtRckLTBw1SRfAH7ohixM2pCfmo9NgGraL7hE",
+        "comment": "/interface"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "CHOOSE ROLE",
+        "address": "QmQkTEgkMzpn8QfdEQ3obQWNvC1yWDLXMQyQtzazMESGfj",
+        "next": "QmQkTEgkMzpn8QfdEQ3obQWNvC1yWDLXMQyQtzazMESGfj"
+    },
+    {
+        "description": "Connecting agents with rides using the services of confederated co-operative platforms.  To get started, choose your role."
+    },
+    {
+        "title": "THE CONFEDERATED, COOPERATIVE RIDESHARE PLATFORM"
+    }
+]

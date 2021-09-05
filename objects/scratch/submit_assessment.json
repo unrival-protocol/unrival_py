@@ -1,0 +1,25 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmUoqP3fufmmF866kPJYttaWbdngdhxEqUSBadxoi6AWBt",
+        "protocol": "ipfs"
+    },
+    {
+        "interpretation": "/iterator/assessment",
+        "inputs": [
+            {
+                "element": "toggle",
+                "required": true,
+                "label": "Do you agree with this claim?",
+                "id": "assessment",
+                "type": "boolean"
+
+            }
+        ],
+        "address": null,
+        "done": "true"
+    },
+    {
+        "args": "address"
+    }
+]

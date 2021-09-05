@@ -1,0 +1,32 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmfZmePVoLfAHYcKwGi6AkK9FbfrsoJt72Zx4BQPKrdhcj",
+        "protocol": "ipfs",
+        "comment": "/iterator/provider"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "Free Rides",
+        "address": "Qma5LhPmC5PYbNV5j1NpKeawBRphRMhjzWsKAW8HYhGCkT",
+        "next": "Qma5LhPmC5PYbNV5j1NpKeawBRphRMhjzWsKAW8HYhGCkT"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "City Lift",
+        "address": "Qma5LhPmC5PYbNV5j1NpKeawBRphRMhjzWsKAW8HYhGCkT",
+        "next": "Qma5LhPmC5PYbNV5j1NpKeawBRphRMhjzWsKAW8HYhGCkT"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "skip",
+        "address": "Qma5LhPmC5PYbNV5j1NpKeawBRphRMhjzWsKAW8HYhGCkT",
+        "next": "Qma5LhPmC5PYbNV5j1NpKeawBRphRMhjzWsKAW8HYhGCkT"
+    },
+    {
+        "description": "Choose a provider for your ride:"
+    },
+    {
+        "title": "PROVIDERS"
+    }
+]

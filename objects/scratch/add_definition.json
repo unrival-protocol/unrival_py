@@ -1,0 +1,35 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "QmUqUkmF63oepsr838jufP1LL4Rm5pxZxUPWpZZ1Gkwj5M",
+        "protocol": "ipfs",
+        "comment": "/iterator"
+    },
+    {
+        "interpretation": "/iterator",
+        "label": "submit",
+        "inputs": [
+            {
+                "element": "input",
+                "required": true,
+                "label": "What are you defining?",
+                "id": "definition-label",
+                "type": "string"
+
+            },
+            {
+                "element": "input",
+                "required": true,
+                "label": "Enter a definition:",
+                "id": "definition-content",
+                "type": "string"
+            }
+        ],
+        "execute": "",
+        "address": null,
+        "done": "true"
+    },
+    {
+        "args": "address"
+    }
+]

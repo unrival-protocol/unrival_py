@@ -1,0 +1,23 @@
+[
+    {
+        "interpretation": "/interpretation",
+        "address": "Qmd1Mh23FpkoJZZ1HPpdRrgGaQLwDrwqjnN7tPEgNkmNZf",
+        "protocol": "ipfs",
+        "comment": "/iterator/claim"
+    },
+    {
+        "interpretation": "/interpretation/domain",
+        "address": "QmNpopjJHok7aH738ohwKkEJPq7JBst5AYx3QAChjnZkaD",
+        "protocol": "ipfs",
+        "comment": "/legal"
+    },
+    {
+        "claim": "All drivers are over the age of 18"
+    },
+    {
+        "interpretation": "/iterator/assessment",
+        "label": "Assess Claim",
+        "address": "QmSSzdYTJJpJNxayyUe3n6iq1zD1H11dbA7omStqxpWQDi",
+        "next": "QmSSzdYTJJpJNxayyUe3n6iq1zD1H11dbA7omStqxpWQDi"
+    }
+]
