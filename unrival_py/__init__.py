@@ -152,8 +152,13 @@ def get_part(parts, part_label):
     return None
 
 def execute(command_string, object_address):
-    execution = run([sys.executable, "-c", command_string, object_address])
-    return execution
+    print(command_string)
+    try:
+        execution = run([sys.executable, "-c", command_string, object_address])
+        return execution
+    except Exception as e:
+        print('failed to execute')
+        return ValueError
 
 def has_part(parts, part_key, part_value=None):
     if part_value:
